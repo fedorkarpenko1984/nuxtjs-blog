@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <el-header>
-      <Navigation />
+      <app-navigation />
     </el-header>
 
     <el-main>
@@ -12,11 +12,11 @@
 </template>
 
 <script>
-import Navigation from "../components/main/Navigation"
+import AppNavigation from "../components/main/Navigation"
 
 export default {
   components: {
-    Navigation
+    AppNavigation
   }
 }
 </script>
