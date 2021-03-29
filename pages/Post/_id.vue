@@ -1,13 +1,16 @@
 <template>
-
+  <h1>Post id</h1>
 </template>
 
 <script>
 export default {
-name: "_id"
+  validate({params}) {
+    return Boolean(params.id)
+  }
 }
 </script>
 
-<style scoped>
+<style lang="sass" scoped>
+  .post
 
 </style>
