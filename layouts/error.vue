@@ -32,5 +32,4 @@ export default {
     color: lightslategrey
 
 
-
 </style>

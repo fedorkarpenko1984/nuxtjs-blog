@@ -27,7 +27,6 @@
         >
       </div>
     </header>
-
     <main class="post-content">
       <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at
         culpa debitis deleniti exercitationem id ipsa laboriosam nesciunt officia voluptas?</p>
@@ -39,6 +38,10 @@
 
     <footer>
 
+      <app-comment-form
+        @created="createCommentHandler"
+        v-if="canAddComment"
+      />
 
       <div class="comments" v-if="true">
         <app-comment
@@ -55,13 +58,25 @@
 
 <script>
 import AppComment from '@/components/main/Comment'
+import AppCommentForm from '@/components/main/CommentForm'
 
 export default {
   components: {
-    AppComment
+    AppComment,
+    AppCommentForm
   },
   validate({params}) {
     return Boolean(params.id)
+  },
+  data: () => {
+    return {
+      canAddComment: true
+    }
+  },
+  methods: {
+    createCommentHandler() {
+      this.canAddComment = false
+    }
   }
 }
 </script>

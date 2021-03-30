@@ -30,7 +30,7 @@ export default {
     display: flex
     justify-content: space-between
     margin-bottom: .5rem
-    .name
+    font-size: .8rem
 
 
   .comment-text
