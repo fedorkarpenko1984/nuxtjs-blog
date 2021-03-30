@@ -57,10 +57,12 @@ export default {
     height: auto
 
   .post-footer
-    padding: 1rem
     display: flex
     justify-content: space-between
     align-items: center
+    padding: 1rem
 
+    .el-button
+      margin: 0
 
 </style>

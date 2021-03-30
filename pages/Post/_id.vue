@@ -39,6 +39,12 @@
 
     <footer>
 
+
+      <div class="comments" v-if="true">
+
+      </div>
+      <div v-else class="text-center">Комментариев нет</div>
+
     </footer>
   </article>
 </template>
@@ -83,8 +89,9 @@ export default {
 
 
     .el-icon-back
-        border-radius: 50%
-        border: 1px solid grey
-        color: dimgrey
-        background: #cad6e2
+      border-radius: 50%
+      border: 1px solid grey
+      color: dimgrey
+      background: #cad6e2
+
 </style>
