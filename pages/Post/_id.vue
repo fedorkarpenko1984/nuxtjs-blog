@@ -41,7 +41,11 @@
 
 
       <div class="comments" v-if="true">
-
+        <app-comment
+          v-for="comment in 4"
+          :key="comment"
+          :comment="comment"
+        />
       </div>
       <div v-else class="text-center">Комментариев нет</div>
 
@@ -50,7 +54,12 @@
 </template>
 
 <script>
+import AppComment from '@/components/main/Comment'
+
 export default {
+  components: {
+    AppComment
+  },
   validate({params}) {
     return Boolean(params.id)
   }

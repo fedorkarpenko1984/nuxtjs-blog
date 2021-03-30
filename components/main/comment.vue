@@ -2,11 +2,11 @@
   <el-card class="comment">
 
     <div class="comment-header">
-      <span>Name</span>
-      <span>
+      <span class="name">Name</span>
+      <small>
         <i class="el-icon-time"></i>
         {{ new Date().toLocaleString() }}
-      </span>
+      </small>
     </div>
 
     <div class="comment-text">
@@ -30,6 +30,8 @@ export default {
     display: flex
     justify-content: space-between
     margin-bottom: .5rem
+    .name
+
 
   .comment-text
     white-space: pre-line
