@@ -61,6 +61,8 @@ export default {
 
     if (message === 'login') {
       this.$message.info('Для входа в панель администратора авторизуйтесь, пожалуйста')
+    } else {
+      this.$message.info('Вы вышли из панели администратора')
     }
   },
   methods: {
