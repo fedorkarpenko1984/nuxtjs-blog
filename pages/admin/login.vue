@@ -59,11 +59,15 @@ export default {
   mounted() {
     const {message} = this.$route.query
 
-    if (message === 'login') {
-      this.$message.info('Для входа в панель администратора авторизуйтесь, пожалуйста')
-    } else {
-      this.$message.info('Вы вышли из панели администратора')
+    switch (message) {
+      case 'login':
+        this.$message.info('Для входа в панель администратора авторизуйтесь, пожалуйста')
+            break
+      case 'logout':
+        this.$message.success('Вы вышли из панели администратора')
+            break
     }
+
   },
   methods: {
     onSubmit() {
