@@ -6,7 +6,8 @@
 
 <script>
 export default {
-  layout: 'administration'
+  layout: 'administration',
+  middleware: 'admin-auth'
 }
 </script>
 

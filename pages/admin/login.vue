@@ -56,10 +56,18 @@ export default {
       }
     }
   },
+  mounted() {
+    const {message} = this.$route.query
+
+    if (message === 'login') {
+      this.$message.info('Для входа в панель администратора авторизуйтесь, пожалуйста')
+    }
+  },
   methods: {
     onSubmit() {
-      this.$refs.form.validate(valid => {
+      this.$refs.form.validate(async valid => {
         if (valid) {
+
           this.loading = true
 
           try {
@@ -68,7 +76,11 @@ export default {
               password: this.controls.password
             }
 
+            await this.$store.dispatch('auth/login', formData)
+            this.$router.push('/admin')
+
           } catch (e) {
+
             this.loading = false
           }
         }
