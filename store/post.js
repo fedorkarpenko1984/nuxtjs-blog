@@ -8,5 +8,8 @@ export const actions = {
         ])
       }, 2000)
     })
+  },
+  async remove({}, id) {
+
   }
 }
