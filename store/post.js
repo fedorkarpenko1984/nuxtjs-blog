@@ -19,6 +19,13 @@ export const actions = {
   async update({}, {id, text}) {
 
   },
+  async create({}, {id, text}) {
+    return await new Promise(resolve => {
+      setTimeout(() => {
+        resolve()
+      }, 2000)
+    })
+  },
   async fetchPostById({}, id) {
     return await new Promise(resolve => {
       setTimeout(() => {

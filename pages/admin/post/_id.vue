@@ -12,7 +12,6 @@
       @submit.native.prevent="onSubmit()"
     >
 
-      <h2>Войти в панель администратора</h2>
 
       <el-form-item label="Текст в формате .md или .html" prop="text">
         <el-input
@@ -106,6 +105,5 @@ export default {
 </script>
 
 <style lang="sass" scoped>
-.page-wrap
-  width: 600px
+
 </style>
