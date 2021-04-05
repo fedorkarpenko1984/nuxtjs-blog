@@ -1,13 +1,15 @@
+const bcrypt = require('bcrypt-nodejs')
 const jwt = require('jsonwebtoken')
 const keys = require('../keys/index')
 const User = require('../models/user.model')
 
 module.exports.login = async (req, res) => {
-  const candidate = User.findOne({login: req.body.login})
-  if (candidate.login) {
+  const candidate = await User.findOne({login: req.body.login})
 
-    const isPasswordCorrect = req.body.password === candidate.password
-    console.log(isPasswordCorrect)
+  if (candidate) {
+
+    const isPasswordCorrect = bcrypt.compareSync(req.body.password, candidate.password)
+
     if (isPasswordCorrect) {
 
       const token = jwt.sign({
@@ -25,6 +27,20 @@ module.exports.login = async (req, res) => {
   }
 }
 
-module.exports.createUser = (req, res) => {
+module.exports.createUser = async (req, res) => {
+  const candidate = await User.findOne({login: req.body.login})
 
+  if (candidate) {
+    res.status(409).json({message: 'Пользователь с таким login уже сущесвует'})
+  } else {
+    const salt = bcrypt.getSaltSync(10)
+
+    const user = new User({
+      login: req.body.login,
+      password: bcrypt.hashSync(req.body.password, salt)
+    })
+
+    await user.save()
+    res.status(201).json(user)
+  }
 }
