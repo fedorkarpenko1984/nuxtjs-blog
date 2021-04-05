@@ -6,5 +6,6 @@ module.exports = {
     writeConcern: {
       j: true
     }
-  }
+  },
+  JWT: 'dev-jwt-key'
 }
