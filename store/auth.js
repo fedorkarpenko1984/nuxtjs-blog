@@ -1,5 +1,5 @@
 export const state = () => ({
-  token: null
+  token: true
 })
 
 export const mutations = {
@@ -27,9 +27,10 @@ export const actions = {
 
   async createUser({commit}, formData) {
     try {
-      console.log('created', formData)
+      await this.$axios.
     } catch (e) {
-
+      commit('setError', e, {root: true})
+      throw e
     }
   },
 

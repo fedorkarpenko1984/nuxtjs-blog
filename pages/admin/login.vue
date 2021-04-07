@@ -5,7 +5,7 @@
   >
     <el-form
       :model="controls"
-      :rules="rules"
+       :rules="rules"
       ref="form"
       @submit.native.prevent="onSubmit()"
     >

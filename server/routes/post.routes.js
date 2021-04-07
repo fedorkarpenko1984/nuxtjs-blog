@@ -1,7 +1,7 @@
 const passport = require('passport')
-const {Router} = require('express')
-const upload = require('upload')
+const upload = require('../middleware/upload')
 const controller = require('../controllers/post.controller')
+const {Router} = require('express')
 const router = Router()
 
 // Admin
@@ -40,7 +40,7 @@ router.delete(
 // api/post
 router.get('/', controller.getAllPosts)
 router.get('/:id', controller.getById)
-router.put('/:id', addView)
+router.put('/:id', controller.addView)
 
 
 module.exports = router
