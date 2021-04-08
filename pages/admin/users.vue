@@ -12,8 +12,8 @@
       <el-input v-model.trim="controls.login"/>
     </el-form-item>
 
-    <el-form-item label="Пароль" prop="password" type="password" class="mb2">
-      <el-input v-model.trim="controls.password"/>
+    <el-form-item label="Пароль" prop="password" class="mb2">
+      <el-input v-model.trim="controls.password" type="password"/>
     </el-form-item>
 
     <el-form-item>
