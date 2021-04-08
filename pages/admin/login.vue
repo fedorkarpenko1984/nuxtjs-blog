@@ -66,6 +66,8 @@ export default {
       case 'logout':
         this.$message.success('Вы вышли из панели администратора')
             break
+      case 'session':
+        this.$message.warning('Время сессиий истекло, пожалуйста, авторизуйтесь')
     }
 
   },

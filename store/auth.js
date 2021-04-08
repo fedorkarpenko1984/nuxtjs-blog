@@ -16,7 +16,6 @@ export const actions = {
     try {
 
       const {token} = await this.$axios.$post('/api/auth/admin/login', formData)
-      console.log(token)
       dispatch('setToken', token)
 
     } catch (e) {
