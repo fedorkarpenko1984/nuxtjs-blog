@@ -18,7 +18,7 @@
           type="textarea"
           resize="none"
           :rows="10"
-          v-model.trim="controls.text"
+          v-model="controls.text"
         />
       </el-form-item>
 
@@ -79,6 +79,9 @@ export default {
       }
     }
   },
+  mounted() {
+    this.controls.text = this.post.text
+  },
   methods: {
     onSubmit() {
       this.$refs.form.validate(async valid => {
@@ -92,7 +95,7 @@ export default {
 
           try {
             await this.$store.dispatch('post/update', formData)
-            this.$message.success('Посто изменен и обновлен')
+            this.$message.success('Пост изменен и обновлен')
             this.loading = false
           } catch (e) {
             this.loading = false

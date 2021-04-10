@@ -40,9 +40,9 @@ module.exports.updatePost = async (req, res) => {
     text: req.body.text
   }
   try {
-    const post = Post.findOneAndUpdate({
-      _id: req.params.id
-    }, {$set}, {new: true})
+    const post = await Post.findOneAndUpdate({_id: req.params.id}, {$set}, {new: true})
+
+    res.json(post)
   } catch (e) {
     res.status(500).json(e)
   }

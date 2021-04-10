@@ -5,19 +5,30 @@ const posts = [
 
 export const actions = {
 
-  async fetchAdmin({}, ) {
-    return await new Promise(resolve => {
-      setTimeout(() => {
-        resolve(posts)
-      }, 2000)
-    })
+  async fetchAdmin({commit}, ) {
+    try {
+      return await this.$axios.$get('api/post/admin')
+    } catch (e) {
+      commit('setError', e, {root: true})
+      throw e
+    }
   },
 
-  async remove({}, id) {
-
+  async remove({commit}, id) {
+    try {
+      return await this.$axios.$delete(`api/post/admin/${id}`)
+    } catch (e) {
+      commit('setError', e, {root: true})
+      throw e
+    }
   },
-  async update({}, {id, text}) {
-
+  async update({commit}, {id, text}) {
+    try {
+      return await this.$axios.$put(`api/post/admin/${id}`, {text})
+    } catch (e) {
+      commit('setError', e, {root: true})
+      throw e
+    }
   },
   async create({commit}, {title, text, image}) {
 
@@ -36,11 +47,12 @@ export const actions = {
     }
 
   },
-  async fetchPostById({}, id) {
-    return await new Promise(resolve => {
-      setTimeout(() => {
-        resolve(posts.find(p => p._id === id))
-      }, 2000)
-    })
+  async fetchPostById({commit}, id) {
+    try {
+      return await this.$axios.$get(`api/post/admin/${id}`)
+    } catch (e) {
+      commit('setError', e, {root: true})
+      throw e
+    }
   }
 }
