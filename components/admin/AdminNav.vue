@@ -4,19 +4,15 @@
     :style="{height: '100%', background: '#fafafa'}"
     :default-active="$route.path"
   >
+
     <el-menu-item index="/admin">
-      <i class="el-icon-menu"></i>
-      <span>Аналитика</span>
+      <i class="el-icon-files"></i>
+      <span>Посты</span>
     </el-menu-item>
 
     <el-menu-item index="/admin/create">
       <i class="el-icon-magic-stick"></i>
       <span>Новый пост</span>
-    </el-menu-item>
-
-    <el-menu-item index="/admin/posts">
-      <i class="el-icon-files"></i>
-      <span>Посты</span>
     </el-menu-item>
 
     <el-menu-item index="/admin/users">
