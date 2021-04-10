@@ -12,6 +12,7 @@ const app = express()
 mongoose.connect(keys.MONGO_URI, keys.options)
   .then(() => console.log('MongoDB connected...'))
   .catch(error => console.log(error))
+mongoose.set('useFindAndModify', false)
 
 app.use(passport.initialize())
 passport.use(passportStrategy)

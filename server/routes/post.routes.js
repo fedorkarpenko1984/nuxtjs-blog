@@ -40,7 +40,7 @@ router.delete(
 // api/post
 router.get('/', controller.getAllPosts)
 router.get('/:id', controller.getById)
-router.put('/:id', controller.addView)
+router.put('/add/view/:id', controller.addView)
 
 
 module.exports = router

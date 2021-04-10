@@ -3,7 +3,7 @@
 
     <header class="post-header">
       <div class="post-title">
-        <h1>Post title</h1>
+        <h1>{{ post.title }}</h1>
         <nuxt-link to="/">
           <i class="el-icon-back"></i>
         </nuxt-link>
@@ -12,28 +12,23 @@
       <div class="post-info">
         <small>
           <i class="el-icon-time"></i>
-          {{ new Date().toLocaleString() }}
+          {{ new Date(post.date).toLocaleString() }}
         </small>
         <small>
           <i class="el-icon-view"></i>
-          42
+          {{ post.views }}
         </small>
       </div>
 
       <div class="post-image">
         <img
-          src="https://lumiere-a.akamaihd.net/v1/images/huang-hai-poster-new-swcom-slide-mobile-_2_ed8a046b.jpeg?region=0,0,1024,626&width=960"
+          :src="post.imageUrl"
           alt="post image"
         >
       </div>
     </header>
     <main class="post-content">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at
-        culpa debitis deleniti exercitationem id ipsa laboriosam nesciunt officia voluptas?</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at
-        culpa debitis deleniti exercitationem id ipsa laboriosam nesciunt officia voluptas?</p>
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam at
-        culpa debitis deleniti exercitationem id ipsa laboriosam nesciunt officia voluptas?</p>
+      <vue-markdown>{{ post.text }}</vue-markdown>
     </main>
 
     <footer>
@@ -43,9 +38,9 @@
         v-if="canAddComment"
       />
 
-      <div class="comments" v-if="true">
+      <div class="comments" v-if="post.comments.length">
         <app-comment
-          v-for="comment in 4"
+          v-for="comment in post.comments"
           :key="comment"
           :comment="comment"
         />
@@ -67,6 +62,11 @@ export default {
   },
   validate({params}) {
     return Boolean(params.id)
+  },
+  async asyncData({store, params}) {
+    const post = await store.dispatch('post/fetchById', params.id)
+    await store.dispatch('post/addView', post)
+    return {post}
   },
   data: () => {
     return {
