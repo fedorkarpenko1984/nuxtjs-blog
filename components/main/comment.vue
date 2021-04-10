@@ -2,15 +2,15 @@
   <el-card class="comment">
 
     <div class="comment-header">
-      <span class="name">Name</span>
+      <span class="name">{{ comment.name}}</span>
       <small>
         <i class="el-icon-time"></i>
-        {{ new Date().toLocaleString() }}
+        {{ new Date(comment.date).toLocaleString() }}
       </small>
     </div>
 
     <div class="comment-text">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, quod?
+      {{ comment.text }}
     </div>
 
   </el-card>
@@ -18,6 +18,12 @@
 
 <script>
 export default {
+  props: {
+    comment: {
+      type: Object,
+      required: true
+    }
+  }
 
 }
 </script>
